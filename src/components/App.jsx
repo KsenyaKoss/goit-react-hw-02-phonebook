@@ -10,7 +10,7 @@ export const App = () => {
         color: '#010101'
       }}
     >
-     Homework 2
+     
     </div>
   );
 };
