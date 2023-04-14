@@ -10,8 +10,8 @@ export const App = () => {
         color: '#010101'
       }}
     >
-     HW
-     
+    
+
     </div>
   );
 };
