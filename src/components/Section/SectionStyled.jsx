@@ -6,4 +6,5 @@ export const StyledSection = styled.section`
   text-align: left;
   color: black;
   margin: 20px 40px;
+  border-radius: 10px;
 `;

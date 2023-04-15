@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-export const Button = ({ title }) => {
+export const Button = ({ title, addContact }) => {
   return (
     <>
-      <StyledButton type="submit">{title}</StyledButton>
+      <StyledButton type="submit" onClick={addContact}>
+        {title}
+      </StyledButton>
     </>
   );
 };
@@ -12,8 +14,8 @@ const StyledButton = styled.button`
   text-decoration: none;
   display: inline-block;
   color: white;
-  padding: 20px 30px;
-  margin: 10px 20px;
+  padding: 10px 10px;
+  margin: 20px 20px;
   border-radius: 10px;
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
