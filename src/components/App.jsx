@@ -1,17 +1,19 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-    
+import { Component } from 'react';
+import { Section } from './Section/Sectiion';
+import { Form } from './Form/Form';
+export class App extends Component {
+  state = {
+    contacts: [],
+    name: '',
+  };
 
-    </div>
-  );
-};
+  render() {
+    return (
+      <>
+        <Section title="Phonebook">
+          <Form value={this.state.name}></Form>
+        </Section>
+      </>
+    );
+  }
+}
