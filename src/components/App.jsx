@@ -23,15 +23,17 @@ export class App extends Component {
     if (existingContact) {
       alert(`${name} or ${number} is already in contacts`);
     } else {
-      this.setState({
-        contacts: [
-          ...this.state.contacts,
-          {
-            id: nanoid(),
-            name,
-            number,
-          },
-        ],
+      this.setState(prevState => {
+        return {
+          contacts: [
+            ...prevState.contacts,
+            {
+              id: nanoid(),
+              name,
+              number,
+            },
+          ],
+        };
       });
     }
   };
@@ -55,7 +57,7 @@ export class App extends Component {
   };
 
   render() {
-    const renderContacts = this.handleFilter(this.state.filter);
+    const renderContacts = this.handleFilter();
     return (
       <>
         <Form onSubmit={this.handleAddContact} />

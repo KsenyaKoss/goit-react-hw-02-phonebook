@@ -7,6 +7,7 @@ import {
   StyledTitle,
 } from './FormStyled';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 export class Form extends Component {
   state = {
@@ -67,3 +68,12 @@ export class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  props: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      number: PropTypes.number,
+    })
+  ),
+};
