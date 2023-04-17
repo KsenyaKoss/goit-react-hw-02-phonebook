@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export const Button = ({ title, addContact }) => {
   return (
@@ -8,6 +9,10 @@ export const Button = ({ title, addContact }) => {
       </StyledButton>
     </>
   );
+};
+
+Button.propTypes = {
+  title: PropTypes.string,
 };
 
 const StyledButton = styled.button`

@@ -1,5 +1,4 @@
 import { Component } from 'react';
-// import { Section } from './Section/Sectiion';
 import { Form } from './Form/Form';
 import { Contacts } from './Contacts/ContactsList';
 import { nanoid } from 'nanoid';
@@ -17,23 +16,31 @@ export class App extends Component {
   };
 
   handleAddContact = ({ name, number }) => {
-    this.setState({
-      contacts: [
-        ...this.state.contacts,
-        {
-          id: nanoid(),
-          name,
-          number,
-        },
-      ],
-    });
+    const { contacts } = this.state;
+    const existingContact = contacts.find(
+      contact => contact.name === name || contact.number === number
+    );
+    if (existingContact) {
+      alert(`${name} or ${number} is already in contacts`);
+    } else {
+      this.setState({
+        contacts: [
+          ...this.state.contacts,
+          {
+            id: nanoid(),
+            name,
+            number,
+          },
+        ],
+      });
+    }
   };
 
-  handleFilter = () => {
-    this.state.contacts.filter(contact => {
+  handleFilter = string => {
+    return this.state.contacts.filter(contact => {
       return contact.name
         .toLowerCase()
-        .includes(this.state.filter.toLowerCase());
+        .includes(this.state.filter.toLowerCase(string));
     });
   };
 
@@ -41,16 +48,23 @@ export class App extends Component {
     this.setState({ filter: ev.target.value });
   };
 
+  deleteUser = id => {
+    this.setState(prevState => {
+      return { contacts: prevState.contacts.filter(user => user.id !== id) };
+    });
+  };
+
   render() {
+    const renderContacts = this.handleFilter(this.state.filter);
     return (
       <>
         <Form onSubmit={this.handleAddContact} />
-        <Filter
-          value={this.state.filter}
-          onChange={this.onInputChange}
-          handleFilter={this.handleFilter}
-        />
-        <Contacts title="Contacts" contacts={this.state.contacts}></Contacts>
+        <Filter value={this.state.filter} onChange={this.onInputChange} />
+        <Contacts
+          title="Contacts"
+          contacts={renderContacts}
+          deleteUser={this.deleteUser}
+        ></Contacts>
       </>
     );
   }
