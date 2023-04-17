@@ -23,6 +23,7 @@ export const Contacts = ({ title, contacts, deleteUser }) => {
 };
 
 Contacts.propTypes = {
+  title: PropTypes.string,
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string,
@@ -30,4 +31,5 @@ Contacts.propTypes = {
       number: PropTypes.string,
     })
   ),
+  deleteUser: PropTypes.func,
 };

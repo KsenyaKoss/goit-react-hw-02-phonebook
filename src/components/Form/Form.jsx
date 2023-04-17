@@ -70,10 +70,5 @@ export class Form extends Component {
 }
 
 Form.propTypes = {
-  props: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      number: PropTypes.number,
-    })
-  ),
+  onSubmit: PropTypes.func,
 };
